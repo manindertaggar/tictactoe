@@ -1,12 +1,13 @@
-package com.eworl.tictactoe.services.messaging;
+package com.eworl.tictactoe.services;
 
 import com.google.firebase.iid.FirebaseInstanceIdService;
 
 /**
- * Created by root on 26/1/17.
+ * Created by Maninder Taggar on 26/1/17.
  */
 
 public class SocketTokenService extends FirebaseInstanceIdService {
+
     @Override
     public void onTokenRefresh() {
         super.onTokenRefresh();

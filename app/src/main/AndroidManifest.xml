@@ -10,13 +10,13 @@
         android:theme="@style/AppTheme">
 
 
-        <service android:name=".services.messaging.SocketService">
+        <service android:name=".services.SocketService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
-        <service android:name=".services.messaging.SocketTokenService">
+        <service android:name=".services.SocketTokenService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>

@@ -1,4 +1,4 @@
-package com.eworl.tictactoe.services.messaging;
+package com.eworl.tictactoe.services;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
@@ -10,6 +10,7 @@ public class SocketService extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
+
     }
 
     @Override

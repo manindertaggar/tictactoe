@@ -3,7 +3,7 @@ package com.eworl.tictactoe.models;
 import com.eworl.tictactoe.models.gameStatus.GameStatus;
 
 /**
- * Created by root on 26/1/17.
+ * Created by Maninder Taggar on 26/1/17.
  */
 
 public class Game {
