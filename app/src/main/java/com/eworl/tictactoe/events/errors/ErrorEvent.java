@@ -7,17 +7,37 @@ import com.eworl.tictactoe.events.Event;
  */
 
 public abstract class ErrorEvent extends Event {
-    String id, message;
+    protected String id, message;
 
     public String getId() {
         return id;
     }
 
-    protected abstract void setId(String id);
+    protected abstract void setId();
 
     public String getMessage() {
         return message;
     }
 
-    protected abstract void setMessage(String message);
+    protected abstract void setMessage();
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+
+        if (!(obj instanceof ErrorEvent)) {
+            return false;
+        }
+
+        return ((ErrorEvent) obj).getId().equals(getId());
+
+    }
+
+    @Override
+    public String toString() {
+        return "errorEvent:\nid: " + getMessage() + "\nmessage: " + getMessage();
+    }
 }

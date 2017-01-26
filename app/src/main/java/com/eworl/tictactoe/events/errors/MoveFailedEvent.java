@@ -6,12 +6,13 @@ package com.eworl.tictactoe.events.errors;
 
 public class MoveFailedEvent extends ErrorEvent {
     @Override
-    protected void setId(String id) {
+    protected void setId() {
+        id = "MoveFailed";
 
     }
 
     @Override
-    protected void setMessage(String message) {
+    protected void setMessage() {
 
     }
 }

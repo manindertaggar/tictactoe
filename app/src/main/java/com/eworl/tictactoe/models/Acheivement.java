@@ -5,8 +5,9 @@ package com.eworl.tictactoe.models;
  */
 
 public class Acheivement {
-    String title;
-    int id;
+    private String title;
+    private int id;
+    private String imageUrl;
 
     public String getTitle() {
         return title;
@@ -22,5 +23,14 @@ public class Acheivement {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

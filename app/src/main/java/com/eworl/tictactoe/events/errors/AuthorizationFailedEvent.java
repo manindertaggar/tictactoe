@@ -7,12 +7,11 @@ package com.eworl.tictactoe.events.errors;
 public class AuthorizationFailedEvent extends ErrorEvent {
 
     @Override
-    protected void setId(String id) {
-
+    protected void setId() {
+        id = "AuthorizationFailed";
     }
 
     @Override
-    protected void setMessage(String message) {
-
+    protected void setMessage() {
     }
 }
