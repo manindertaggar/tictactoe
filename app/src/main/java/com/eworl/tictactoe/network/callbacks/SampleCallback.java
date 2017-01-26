@@ -3,7 +3,7 @@ package com.eworl.tictactoe.network.callbacks;
 import android.content.Context;
 import android.util.Log;
 
-import com.eworl.tictactoe.models.Error;
+import com.eworl.tictactoe.network.core.Error;
 import com.eworl.tictactoe.network.core.RequestCallback;
 import com.google.gson.Gson;
 

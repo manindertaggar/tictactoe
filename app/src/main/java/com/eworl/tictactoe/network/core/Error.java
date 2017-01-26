@@ -1,4 +1,4 @@
-package com.eworl.tictactoe.models;
+package com.eworl.tictactoe.network.core;
 
 /**
  * Created by root on 26/1/17.
