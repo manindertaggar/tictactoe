@@ -6,12 +6,12 @@ import com.eworl.tictactoe.Database;
 import com.eworl.tictactoe.Log;
 import com.eworl.tictactoe.models.Player;
 import com.eworl.tictactoe.network.rest.NetworkConstants;
-import com.eworl.tictactoe.network.rest.callbacks.UpdateFcmTokenCallback;
-import com.eworl.tictactoe.network.rest.core.HttpRequest;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 import okhttp3.FormBody;
 import okhttp3.RequestBody;
+import  com.eworl.tictactoe.network.rest.core.HttpRequest;
+import static java.security.AccessController.getContext;
 
 /**
  * Created by Maninder Taggar on 10/12/16.
@@ -34,7 +34,7 @@ public class UpdateFcmTokenRequest extends HttpRequest {
         String fcmToken = FirebaseInstanceId.getInstance().getToken();
 
         RequestBody formBody = new FormBody.Builder()
-                .add("userId", player.getUserId())
+                .add("playerId", player.getUserId())
                 .add("token", player.getToken())
                 .add("fcmToken", fcmToken)
                 .build();

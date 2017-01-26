@@ -30,7 +30,7 @@ public class SampleRequest extends HttpRequest {
 
         Player player = Database.getRunningInstance().getPlayer();
         RequestBody formBody = new FormBody.Builder()
-                .add("userId", player.getUserId())
+                .add("playerId", player.getUserId())
                 .add("token", player.getToken())
                 .build();
 

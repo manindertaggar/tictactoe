@@ -14,7 +14,6 @@ import okhttp3.RequestBody;
  * Created by Maninder Taggar on 12/4/16.
  */
 public abstract class HttpRequest {
-    public static final String POST = "post";
     public static final String HEADER_CONTENT_TYPE = "Content-Type";
     public static final String HEADER_TEXT_JSON = "text/json";
     private static final String TAG = HttpRequest.class.getCanonicalName();

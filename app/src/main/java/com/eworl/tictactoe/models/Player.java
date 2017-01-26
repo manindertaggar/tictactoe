@@ -12,7 +12,7 @@ public class Player {
     private int numberOfGamesPlayed;
     private long rank;
     private double winPercentage;
-    private String userId;
+    private String playerId;
 
     public String getName() {
         return name;
@@ -87,10 +87,10 @@ public class Player {
     }
 
     public String getUserId() {
-        return userId;
+        return playerId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUserId(String playerId) {
+        this.playerId = playerId;
     }
 }

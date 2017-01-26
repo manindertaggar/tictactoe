@@ -2,6 +2,7 @@ package com.eworl.tictactoe.network.communicationEngine;
 
 import android.content.Context;
 
+import com.eworl.tictactoe.AppConstants;
 import com.eworl.tictactoe.Log;
 import com.eworl.tictactoe.events.incoming.AcheivementEvent;
 import com.eworl.tictactoe.events.incoming.GameEndEvent;
@@ -10,7 +11,10 @@ import com.eworl.tictactoe.events.incoming.GameStartEvent;
 import com.eworl.tictactoe.events.incoming.MoveMadeEvent;
 import com.eworl.tictactoe.events.incoming.RankUpgradeEvent;
 import com.eworl.tictactoe.events.incoming.TimeoutEvent;
+import com.eworl.tictactoe.utils.MessageIdGenerator;
 import com.eworl.tictactoe.utils.NotificationCreator;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.RemoteMessage;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
@@ -23,6 +27,16 @@ import java.util.Map;
  */
 
 public class CommunicationEngine {
+
+    public static void sendMessage(Message message) {
+        Log.i(CommunicationEngine.class, "sendMessage: " + message);
+
+        FirebaseMessaging fm = FirebaseMessaging.getInstance();
+        fm.send(new RemoteMessage.Builder(AppConstants.FCM_SENDER_ID + "@gcm.googleapis.com")
+                .setMessageId(Integer.toString(MessageIdGenerator.incrementAndGet()))
+                .addData("data", message.getMessage())
+                .build());
+    }
 
     public static void parseMessage(Context context, Map<String, String> data) {
         String type = data.get("type");
