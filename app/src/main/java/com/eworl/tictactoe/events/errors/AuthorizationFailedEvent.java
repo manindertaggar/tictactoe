@@ -4,7 +4,8 @@ package com.eworl.tictactoe.events.errors;
  * Created by root on 26/1/17.
  */
 
-public class MoveFailedEvent extends ErrorEvent {
+public class AuthorizationFailedEvent extends ErrorEvent {
+
     @Override
     protected void setId(String id) {
 
