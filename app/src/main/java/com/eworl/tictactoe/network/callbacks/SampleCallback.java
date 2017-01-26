@@ -1,9 +1,11 @@
 package com.eworl.tictactoe.network.callbacks;
 
-import android.app.Activity;
+import android.content.Context;
 import android.util.Log;
 
+import com.eworl.tictactoe.models.Error;
 import com.eworl.tictactoe.network.core.RequestCallback;
+import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,15 +22,14 @@ import okhttp3.Response;
 public class SampleCallback extends RequestCallback {
     private static final String TAG = SampleCallback.class.getCanonicalName();
 
-    public SampleCallback(Activity activity) {
-        super(activity);
+    public SampleCallback(Context context) {
+        super(context);
     }
 
 
     @Override
     public void onFailure(Call call, IOException e) {
         showError(e);
-
     }
 
     private void showError(Exception e) {
@@ -36,7 +37,7 @@ public class SampleCallback extends RequestCallback {
         getHandler().post(new Runnable() {
             @Override
             public void run() {
-//                loginActivity.checkAccountCallfailed();
+                //TODO: handler error here
             }
         });
     }
@@ -44,19 +45,21 @@ public class SampleCallback extends RequestCallback {
     @Override
     public void onResponse(Call call, Response rawResponse) throws IOException {
         final String response = rawResponse.body().string();
-        if (response.contains("error")) {
-            showError(new Exception(response));
-        } else {
-            getHandler().post(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        JSONObject dataObject = new JSONObject(response).getJSONObject("data");
-                    } catch (JSONException e) {
-                        showError(e);
+        try {
+            JSONObject dataObject = new JSONObject(response);
+            if (dataObject.getBoolean("isError")) {
+                Error error = new Gson().fromJson(dataObject.toString(), Error.class);
+                showError(error.getException());
+            } else {
+                getHandler().post(new Runnable() {
+                    @Override
+                    public void run() {
+                        //TODO: do something here
                     }
-                }
-            })
+                });
+            }
+        } catch (JSONException e) {
+            showError(e);
         }
     }
 }

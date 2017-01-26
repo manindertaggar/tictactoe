@@ -1,10 +1,9 @@
-package com.goldducks.grabitusadmin.network.requests;
+package com.eworl.tictactoe.network.requests;
 
 import android.content.Context;
 
-import com.goldducks.grabitusadmin.network.callbacks.AddAdminCallback;
-import com.goldducks.grabitusadmin.network.core.HttpRequest;
-import com.goldducks.grabitusadmin.network.core.RequestCallback;
+import com.eworl.tictactoe.network.core.HttpRequest;
+import com.eworl.tictactoe.network.core.RequestCallback;
 
 import okhttp3.FormBody;
 import okhttp3.RequestBody;
@@ -26,8 +25,8 @@ public class SampleRequest extends HttpRequest {
                 .build();
 
         String url = "";
-        RequestCallback callback = new AddAdminCallback(null);
-        super.send(url, HttpRequest.POST, formBody, callback);
+        RequestCallback callback = null;
+        super.send(url, formBody, callback);
 
     }
 }
