@@ -7,6 +7,7 @@ import android.app.Activity;
  */
 
 public class LoginActivity extends Activity {
+
     public void onLoginFailed(String s) {
 
     }

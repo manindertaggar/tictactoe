@@ -1,12 +1,14 @@
 package com.eworl.tictactoe.network.requests;
 
 import android.content.Context;
-import android.provider.Settings;
-import android.util.Log;
 
+import com.eworl.tictactoe.Database;
+import com.eworl.tictactoe.Log;
+import com.eworl.tictactoe.models.Player;
 import com.eworl.tictactoe.network.NetworkConstants;
 import com.eworl.tictactoe.network.callbacks.UpdateFcmTokenCallback;
 import com.eworl.tictactoe.network.core.HttpRequest;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import okhttp3.FormBody;
 import okhttp3.RequestBody;
@@ -17,26 +19,32 @@ import okhttp3.RequestBody;
 
 public class UpdateFcmTokenRequest extends HttpRequest {
 
-    private String TAG = UpdateFcmTokenRequest.class.getCanonicalName();
-    Context context;
-
     public UpdateFcmTokenRequest(Context context) {
         super(context);
-        this.context = context;
     }
 
-    public void start(String fcmToken) {
-        String deviceId = Settings.Secure.getString(context.getContentResolver(),
-                Settings.Secure.ANDROID_ID);
+    public void start() {
+        Database database = Database.getRunningInstance();
+        if (!database.isPlayerLoggedIn()) {
+            Log.w(getClass(), "start: user is not loggedin so not updating FCMTOKEN");
+            return;
+        }
+
+        Player player = database.getPlayer();
+        String fcmToken = FirebaseInstanceId.getInstance().getToken();
+
         RequestBody formBody = new FormBody.Builder()
-                .add("user_id", "")
-                .add("token", "")
-                .add("fcm_token", fcmToken)
+                .add("userId", player.getUserId())
+                .add("token", player.getToken())
+                .add("fcmToken", fcmToken)
                 .build();
-        Log.d(TAG, "updating token");
-        String url = NetworkConstants.ROUTE_UPDATE_FCM_TOKEN;
-        UpdateFcmTokenCallback callback = new UpdateFcmTokenCallback(context);
-        super.send(url, formBody, callback);
+
+        Log.d(getClass(), "updating token" + fcmToken);
+
+        UpdateFcmTokenCallback callback = new UpdateFcmTokenCallback(getContext());
+        super.send(NetworkConstants.ROUTE_UPDATE_FCM_TOKEN, formBody, callback);
     }
+
+
 }
 

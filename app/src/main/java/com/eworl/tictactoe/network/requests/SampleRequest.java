@@ -2,6 +2,9 @@ package com.eworl.tictactoe.network.requests;
 
 import android.content.Context;
 
+import com.eworl.tictactoe.Database;
+import com.eworl.tictactoe.Log;
+import com.eworl.tictactoe.models.Player;
 import com.eworl.tictactoe.network.core.HttpRequest;
 import com.eworl.tictactoe.network.core.RequestCallback;
 
@@ -20,13 +23,19 @@ public class SampleRequest extends HttpRequest {
     }
 
     public void start() {
+        Database database = Database.getRunningInstance();
+        if (!database.isPlayerLoggedIn()) {
+            Log.w(getClass(), "start: user not logged in, so not sending call");
+        }
+
+        Player player = Database.getRunningInstance().getPlayer();
         RequestBody formBody = new FormBody.Builder()
-                .add("", "")
+                .add("userId", player.getUserId())
+                .add("token", player.getToken())
                 .build();
 
-        String url = "";
         RequestCallback callback = null;
-        super.send(url, formBody, callback);
+        super.send("", formBody, callback);
 
     }
 }

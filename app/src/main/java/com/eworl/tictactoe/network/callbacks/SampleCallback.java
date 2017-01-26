@@ -1,8 +1,8 @@
 package com.eworl.tictactoe.network.callbacks;
 
 import android.content.Context;
-import android.util.Log;
 
+import com.eworl.tictactoe.Log;
 import com.eworl.tictactoe.network.core.Error;
 import com.eworl.tictactoe.network.core.RequestCallback;
 import com.google.gson.Gson;
@@ -33,7 +33,7 @@ public class SampleCallback extends RequestCallback {
     }
 
     private void showError(Exception e) {
-        Log.e(TAG, e.toString());
+        Log.e(getClass(), e.toString());
         getHandler().post(new Runnable() {
             @Override
             public void run() {
@@ -51,6 +51,8 @@ public class SampleCallback extends RequestCallback {
                 Error error = new Gson().fromJson(dataObject.toString(), Error.class);
                 showError(error.getException());
             } else {
+                dataObject = dataObject.getJSONObject("data");
+                Log.i(getClass(), dataObject.toString());
                 getHandler().post(new Runnable() {
                     @Override
                     public void run() {

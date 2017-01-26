@@ -2,6 +2,8 @@ package com.eworl.tictactoe.network.core;
 
 import android.content.Context;
 
+import com.eworl.tictactoe.Log;
+
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -26,6 +28,11 @@ public abstract class HttpRequest {
         mContext = context;
     }
 
+    protected Context getContext() {
+        return mContext;
+    }
+
+
     public void send(String url, RequestBody requestBody, RequestCallback callback) {
         OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(2, TimeUnit.MINUTES)
@@ -38,6 +45,7 @@ public abstract class HttpRequest {
 
         Request httpRequest = requestBuilder.post(requestBody).build();
 
+        Log.i(getClass(), "send: \nurl:" + url + "\nresponseBody: " + requestBody.toString());
         client.newCall(httpRequest).enqueue(callback);
 
     }
