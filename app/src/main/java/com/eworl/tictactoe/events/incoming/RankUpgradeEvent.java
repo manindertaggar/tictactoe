@@ -5,4 +5,11 @@ package com.eworl.tictactoe.events.incoming;
  */
 
 public class RankUpgradeEvent extends IncomingEvent {
+    public static final String identity = "RankUpgradeEvent";
+
+    @Override
+    public void setIdentity() {
+        super.identity = identity;
+    }
+
 }

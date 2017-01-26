@@ -1,6 +1,6 @@
 package com.eworl.tictactoe.services;
 
-import com.eworl.tictactoe.network.requests.UpdateFcmTokenRequest;
+import com.eworl.tictactoe.network.rest.requests.UpdateFcmTokenRequest;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 
 /**

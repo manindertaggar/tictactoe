@@ -1,12 +1,12 @@
-package com.eworl.tictactoe.network.requests;
+package com.eworl.tictactoe.network.rest.requests;
 
 import android.content.Context;
 
 import com.eworl.tictactoe.Database;
 import com.eworl.tictactoe.Log;
 import com.eworl.tictactoe.models.Player;
-import com.eworl.tictactoe.network.core.HttpRequest;
-import com.eworl.tictactoe.network.core.RequestCallback;
+import com.eworl.tictactoe.network.rest.core.HttpRequest;
+import com.eworl.tictactoe.network.rest.core.RequestCallback;
 
 import okhttp3.FormBody;
 import okhttp3.RequestBody;

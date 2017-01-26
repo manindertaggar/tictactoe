@@ -70,10 +70,6 @@ public class Player {
         this.numberOfGamesPlayed = numberOfGamesPlayed;
     }
 
-    public void setRank(long rank) {
-        this.rank = rank;
-    }
-
     public double getWinPercentage() {
         return winPercentage;
     }
@@ -84,6 +80,10 @@ public class Player {
 
     public long getRank() {
         return rank;
+    }
+
+    public void setRank(long rank) {
+        this.rank = rank;
     }
 
     public String getUserId() {

@@ -1,4 +1,4 @@
-package com.eworl.tictactoe.network;
+package com.eworl.tictactoe.network.rest;
 
 /**
  * Created by Maninder Taggar on 26/1/17.

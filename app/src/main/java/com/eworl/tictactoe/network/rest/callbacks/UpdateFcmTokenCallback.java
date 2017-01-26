@@ -1,11 +1,10 @@
-package com.eworl.tictactoe.network.callbacks;
+package com.eworl.tictactoe.network.rest.callbacks;
 
 import android.content.Context;
 
 import com.eworl.tictactoe.Log;
-import com.eworl.tictactoe.network.core.Error;
-import com.eworl.tictactoe.network.core.RequestCallback;
-import com.eworl.tictactoe.network.requests.UpdateFcmTokenRequest;
+import com.eworl.tictactoe.network.rest.core.RequestCallback;
+import com.eworl.tictactoe.network.rest.requests.UpdateFcmTokenRequest;
 import com.google.gson.Gson;
 
 import org.json.JSONException;

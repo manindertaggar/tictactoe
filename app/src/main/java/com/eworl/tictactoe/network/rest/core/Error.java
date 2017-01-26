@@ -1,4 +1,4 @@
-package com.eworl.tictactoe.network.core;
+package com.eworl.tictactoe.network.rest.core;
 
 /**
  * Created by root on 26/1/17.

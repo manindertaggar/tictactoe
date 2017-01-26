@@ -1,4 +1,4 @@
-package com.eworl.tictactoe.network.core;
+package com.eworl.tictactoe.network.rest.core;
 
 import android.content.Context;
 import android.os.Handler;

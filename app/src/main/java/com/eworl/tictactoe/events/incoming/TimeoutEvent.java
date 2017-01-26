@@ -5,4 +5,11 @@ package com.eworl.tictactoe.events.incoming;
  */
 
 public class TimeoutEvent extends IncomingEvent {
+    public static final String identity = "TimeoutEvent";
+
+    @Override
+    public void setIdentity() {
+        super.identity = identity;
+    }
+
 }

@@ -5,4 +5,11 @@ package com.eworl.tictactoe.events.incoming;
  */
 
 public class GameStartEvent extends IncomingEvent {
+    public static final String identity = "GameStartEvent";
+
+    @Override
+    public void setIdentity() {
+        super.identity = identity;
+    }
+
 }

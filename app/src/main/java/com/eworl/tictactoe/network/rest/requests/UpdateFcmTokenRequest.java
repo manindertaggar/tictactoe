@@ -1,13 +1,13 @@
-package com.eworl.tictactoe.network.requests;
+package com.eworl.tictactoe.network.rest.requests;
 
 import android.content.Context;
 
 import com.eworl.tictactoe.Database;
 import com.eworl.tictactoe.Log;
 import com.eworl.tictactoe.models.Player;
-import com.eworl.tictactoe.network.NetworkConstants;
-import com.eworl.tictactoe.network.callbacks.UpdateFcmTokenCallback;
-import com.eworl.tictactoe.network.core.HttpRequest;
+import com.eworl.tictactoe.network.rest.NetworkConstants;
+import com.eworl.tictactoe.network.rest.callbacks.UpdateFcmTokenCallback;
+import com.eworl.tictactoe.network.rest.core.HttpRequest;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 import okhttp3.FormBody;

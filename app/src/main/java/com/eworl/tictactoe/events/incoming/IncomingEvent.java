@@ -7,4 +7,11 @@ import com.eworl.tictactoe.events.Event;
  */
 
 public abstract class IncomingEvent extends Event {
+    protected String identity;
+
+    public String getIdentity() {
+        return identity;
+    }
+
+    public abstract void setIdentity();
 }
